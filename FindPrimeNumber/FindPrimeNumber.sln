@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindPrimeNumber", "FindPrimeNumber\FindPrimeNumber.csproj", "{07F3E567-42F7-4D68-A49E-3D65523CC082}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIndex", "CheckIndex\CheckIndex.csproj", "{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -19,6 +21,13 @@ Global
 		{07F3E567-42F7-4D68-A49E-3D65523CC082}.Release|x64.Build.0 = Release|x64
 		{07F3E567-42F7-4D68-A49E-3D65523CC082}.Release|x86.ActiveCfg = Release|x86
 		{07F3E567-42F7-4D68-A49E-3D65523CC082}.Release|x86.Build.0 = Release|x86
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Debug|x64.ActiveCfg = Debug|x86
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Debug|x86.ActiveCfg = Debug|x86
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Debug|x86.Build.0 = Debug|x86
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Release|x64.ActiveCfg = Release|x64
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Release|x64.Build.0 = Release|x64
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Release|x86.ActiveCfg = Release|x86
+		{B7D991EA-4012-4C1C-8767-8B3CC4BECD39}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
