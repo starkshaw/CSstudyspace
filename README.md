@@ -31,3 +31,7 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 ### Stack Palindrome
 **Check if a string is a palindrome through stack object.**
 - [Program.cs](StackPalindrome/StackPalindrome/Program.cs) - The main namespace.
+
+### Triangular Number
+**Find the triangular number. Use `-help` to find more help.**
+- [Program.cs](TriangularNumber/TriangularNumber/Program.cs) - The main namespace.
