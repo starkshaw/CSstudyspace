@@ -17,7 +17,7 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 
 ### Fibonacci Sequence
 **See the command help information, complie and run `FibonacciSequence -help` in Command Prompt or Windows PowerShell. This package includes the method of creating a parameter-supported java program and exception handle statement.**
-- [FibonacciSequence](FibonacciSequence/Program.cs) - The main namespace.
+- [FibonacciSequence](FibonacciSequence/FibonacciSequence/Program.cs) - The main namespace.
 
 ### Monte Carlo Algorithms
 **Use Monte Carlo Simulation to generate 1,000,000 random numbers to find the possible points on 5 dices.**
