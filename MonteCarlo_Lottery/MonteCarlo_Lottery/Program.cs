@@ -10,8 +10,8 @@ namespace ConsoleApplication1 {
 		static void Main(string[] args) {
 			// Initialize
 			string currentPath = Directory.GetCurrentDirectory();
-			if (File.Exists(@currentPath + "\\output.txt")) {
-				File.Delete(@currentPath + "\\output.txt");
+			if (File.Exists(string.Format(@"{0}\\output.txt",currentPath))) {
+				File.Delete(string.Format(@"{0}\\output.txt",currentPath));
 			}
 			//int[] lottery = new int[6];
 			int draw = 10000;
