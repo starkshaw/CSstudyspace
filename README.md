@@ -17,21 +17,25 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 
 ### Fibonacci Sequence
 **See the command help information, complie and run `FibonacciSequence -help` in Command Prompt or Windows PowerShell. This package includes the method of creating a parameter-supported java program and exception handle statement.**
-- [FibonacciSequence](FibonacciSequence/FibonacciSequence/Program.cs) - The main namespace.
+- [FibonacciSequence](FibonacciSequence/FibonacciSequence/Program.cs) - The main class.
 
 ### Monte Carlo Algorithms
 **Use Monte Carlo Simulation to generate 1,000,000 random numbers to find the possible points on 5 dices.**
 - [Dice.cs](MonteCarloAlgorithms/MonteCarloAlgorithms/Dice.cs) - The Dice object.
-- [Program.cs](MonteCarloAlgorithms/MonteCarloAlgorithms/Program.cs) - The main namespace.
+- [Program.cs](MonteCarloAlgorithms/MonteCarloAlgorithms/Program.cs) - The main class.
 
 ### AIB Datathon
 **Analysis the most popular film in the given list and order them.**
-- [Program.cs](AIBDatathon/AIBDatathon/Program.cs) - The main namespace.
+- [Program.cs](AIBDatathon/AIBDatathon/Program.cs) - The main class.
 
 ### Stack Palindrome
 **Check if a string is a palindrome through stack object.**
-- [Program.cs](StackPalindrome/StackPalindrome/Program.cs) - The main namespace.
+- [Program.cs](StackPalindrome/StackPalindrome/Program.cs) - The main class.
 
 ### Triangular Number
 **Find the triangular number. Use `-help` to find more help.**
-- [Program.cs](TriangularNumber/TriangularNumber/Program.cs) - The main namespace.
+- [Program.cs](TriangularNumber/TriangularNumber/Program.cs) - The main class.
+
+### Monte Carlo Simulation in Lottery
+**Generate a 6-number sequence from 1 to 45 and predict the possibility of it appears consecutive pair.
+- [Program.cs](MonteCarlo_Lottery/MonteCarlo_Lottery/Program.cs) - The main class.
