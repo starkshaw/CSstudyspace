@@ -37,5 +37,5 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 - [Program.cs](TriangularNumber/TriangularNumber/Program.cs) - The main class.
 
 ### Monte Carlo Simulation in Lottery
-**Generate a 6-number sequence from 1 to 45 and predict the possibility of it appears consecutive pair.
+**Generate a 6-number sequence from 1 to 45 and predict the possibility of it appears consecutive pair.**
 - [Program.cs](MonteCarlo_Lottery/MonteCarlo_Lottery/Program.cs) - The main class.
