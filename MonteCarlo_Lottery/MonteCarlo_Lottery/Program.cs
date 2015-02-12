@@ -10,12 +10,12 @@ namespace ConsoleApplication1 {
 		static void Main(string[] args) {
 			// Initialize
 			string currentPath = Directory.GetCurrentDirectory();
-			if (File.Exists(string.Format(@"{0}\\output.txt",currentPath))) {
-				File.Delete(string.Format(@"{0}\\output.txt",currentPath));
+			if (File.Exists(string.Format(@"{0}\\output.txt", currentPath))) {
+				File.Delete(string.Format(@"{0}\\output.txt", currentPath));
 			}
 			//int[] lottery = new int[6];
 			int draw = 10000;
-			Console.Write("How many times you want to draw the lottery? (Default: 10000):");
+			Console.Write("How many times you want to draw the lottery (Default: 10000):");
 			string read = Console.ReadLine();
 			if (read.Length != 0) {
 				draw = int.Parse(read);
@@ -39,21 +39,22 @@ namespace ConsoleApplication1 {
 			}
 			// Cancel the duplicates
 			Console.WriteLine("Cancelling the duplicates...");
+			cancelDuplicates(lottery);
+			// Ascending Sorting
+			Console.WriteLine("Sorting...");
 			for (int i = 0; i < lottery.GetLength(0); i++) {
-				for (int j = 0; j < lottery.GetLength(1) - 1; j++) {
-					while (lottery[i, j] == lottery[i, j + 1]) {
-						lottery[i, j + 1] = generate();
-					}
-				}
+				ascendingSort(lottery, i);
 			}
 			/*for (int i = 0; i < lottery.GetLength(0); i++) {
+				Console.Write("#{0}\t", i);
 				for (int j = 0; j < lottery.GetLength(1); j++) {
 					Console.Write("{0} ", lottery[i, j]);
 				}
 				Console.WriteLine();
 			}*/
-			// Ascending Sorting
-			Console.WriteLine("Sorting...");
+			// Double check
+			Console.WriteLine("Double checking...");
+			cancelDuplicates(lottery);
 			for (int i = 0; i < lottery.GetLength(0); i++) {
 				ascendingSort(lottery, i);
 			}
@@ -80,7 +81,7 @@ namespace ConsoleApplication1 {
 				Console.WriteLine(i);
 			}*/
 			using (System.IO.StreamWriter file = new System.IO.StreamWriter(string.Format(@"{0}\\output.txt", currentPath), true)) {
-				file.WriteLine("===RESULTS IN {0} TIMES DRAW===",draw);
+				file.WriteLine("===RESULTS IN {0} TIMES DRAW===", draw);
 				for (int i = 0; i < result.GetLength(0); i++) {
 					if (result[i] == false) {
 						file.WriteLine("#{0}\tFALSE\t{1}", i, sequences[i]);
@@ -131,6 +132,21 @@ namespace ConsoleApplication1 {
 
 		public static int generate() {
 			return ran.Next(1, 46);
+		}
+
+		public static void cancelDuplicates(int[,] lottery) {
+			for (int i = 0; i < lottery.GetLength(0); i++) {
+				for (int j = 0; j < lottery.GetLength(1) - 1; j++) {
+					for (int k = j + 1; k < lottery.GetLength(1); k++) {
+						while (lottery[i, j] == lottery[i, k]) {
+							lottery[i, k] = generate();
+						}
+					}
+					/*while (lottery[i, j] == lottery[i, j + 1]) {
+						lottery[i, j + 1] = generate();
+					}*/
+				}
+			}
 		}
 
 		/*public static void ascendingSort(int[] lotteryArray) {
