@@ -29,7 +29,7 @@ namespace ConsoleApplication1 {
 				}
 				// Generate the lottery
 				Console.Write("\n[{0:d/M/yyyy HH:mm:ss.fff}]  ", DateTime.Now);
-				Console.WriteLine("Generate and sort random numbers...");
+				Console.WriteLine("Generate and sort random numbers, search consecutive pairs...");
 				for (int i = 0; i < lottery.GetLength(0); i++) {
 					// Generate the reference array
 					int[] reference = new int[46];	// Ignore the 0 element.
@@ -47,6 +47,14 @@ namespace ConsoleApplication1 {
 					}
 					// Ascending Sorting
 					ascendingSort(lottery, i);
+					// Searching consecutive pairs
+					for (int j = 0; j < lottery.GetLength(1) - 1; j++) {
+						if (lottery[i, j] == lottery[i, j + 1] - 1) {
+							result[i] = true;
+							occurrence++;
+							break;
+						}
+					}
 				}
 				/*for (int i = 0; i < lottery.GetLength(0); i++) {
 					Console.Write("#{0}\t", i);
@@ -55,23 +63,6 @@ namespace ConsoleApplication1 {
 					}
 					Console.WriteLine();
 				}*/
-				// Search consecutive pairs
-				Console.Write("\n[{0:d/M/yyyy HH:mm:ss.fff}]  ", DateTime.Now);
-				Console.WriteLine("Searching consecutive pairs...");
-				for (int i = 0; i < lottery.GetLength(0); i++) {
-					for (int j = 0; j < lottery.GetLength(1) - 1; j++) {
-						if (lottery[i, j] == lottery[i, j + 1] - 1) {
-							result[i] = true;
-							break;
-						}
-					}
-				}
-				for (int i = 0; i < result.GetLength(0); i++) {
-					if (result[i] == true) {
-						occurrence++;
-					}
-					//Console.WriteLine(result[i].ToString());
-				}
 				for (int i = 0; i < sequences.GetLength(0); i++) {
 					sequences[i] = string.Format("{0},{1},{2},{3},{4},{5}", lottery[i, 0], lottery[i, 1], lottery[i, 2], lottery[i, 3], lottery[i, 4], lottery[i, 5]);
 				}
@@ -98,7 +89,7 @@ namespace ConsoleApplication1 {
 					Console.Write("\n[{0:d/M/yyyy HH:mm:ss.fff}]  ", DateTime.Now);
 					Console.WriteLine("The result text file is saved to {0}\\output.txt", currentPath);
 				}
-			} catch (OutOfMemoryException) {
+			} catch (OutOfMemoryException) {	// Exception handle
 				Console.WriteLine("\nThis program does not support this amount of draw. The possible reasons are:");
 				Console.WriteLine("   1. A significant huge number.");
 				Console.WriteLine("   2. Your current computer does not have enough RAM or you are under 32-bit environment.");
