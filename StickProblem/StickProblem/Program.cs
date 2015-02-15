@@ -44,7 +44,6 @@ namespace StickProblem {
 				}
 				Console.WriteLine("Examining the possibility of build triangle...");
 				for (int i = 0; i < draw.GetLength(0); i++) {
-					//Console.WriteLine("EXAMINING...");
 					if (draw[i, 0] + draw[i, 1] > draw[i, 2]) {
 						//Console.WriteLine("TRUE {0}, {1}, {2}", draw[i, 0], draw[i, 1], draw[i, 2]);
 						result[i] = true;
@@ -61,10 +60,8 @@ namespace StickProblem {
 					for (int i = 0; i < result.GetLength(0); i++) {
 						if (result[i] == false) {
 							file.WriteLine("#{0}\tFALSE\t{1}, {2}, {3}", i, draw[i, 0], draw[i, 1], draw[i, 2]);
-							//Console.WriteLine("#{0}\tFALSE\t{1}", i, sequences[i]);
 						} else {
 							file.WriteLine("#{0}\tTRUE\t{1}, {2}, {3}", i, draw[i, 0], draw[i, 1], draw[i, 2]);
-							//Console.WriteLine("#{0}\tTRUE\t{1}", i, sequences[i]);
 						}
 					}
 					file.WriteLine("==========RESULT END==========");

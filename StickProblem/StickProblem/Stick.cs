@@ -58,6 +58,5 @@ namespace StickProblem {
 				sides[j] = tmp;
 			}
 		}
-
 	}
 }
