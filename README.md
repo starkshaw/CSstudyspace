@@ -39,3 +39,8 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 ### Monte Carlo Simulation in Lottery
 **Generate a 6-number sequence from 1 to 45 and predict the possibility of it appears consecutive pair.**
 - [Program.cs](MonteCarlo_Lottery/MonteCarlo_Lottery/Program.cs) - The main class.
+
+### Stick Problem
+** Once again about Monte Carlo Simulation. This project is about a stick simulation. Break a stick randomly into 3 pieces, calculate the probability of form those 3 pieces into triangle.
+- [Program.cs](StickProblem/StickProblem/Program.cs) - The main class.
+- [Stick.cs](StickProblem/StickProblem/Stick.cs) - The Stick class controls the operation of stick.
