@@ -33,13 +33,11 @@ namespace StickProblem {
 		/// <returns>The length of 3 broken pieces.</returns>
 		public int[] separate() {
 			int[] sides = new int[3];
-		examine:
-			this.side1 = ran.Next(1, circumferrence);
-			this.side2 = ran.Next(1, circumferrence - this.side1);
-			this.side3 = circumferrence - this.side1 - this.side2;
-			if (this.side1 + this.side2 == circumferrence) {
-				goto examine;
-			}
+			do {
+				this.side1 = ran.Next(1, circumferrence);
+				this.side2 = ran.Next(1, circumferrence - this.side1);
+				this.side3 = circumferrence - this.side1 - this.side2;
+			} while (this.side1 + this.side2 == circumferrence);
 			sides[0] = this.side1;
 			sides[1] = this.side2;
 			sides[2] = this.side3;
@@ -72,15 +70,18 @@ namespace StickProblem {
 		/// <returns>An integer array consists lengths of broken sticks.</returns>
 		public int[] separate(int times, int length) {
 			int[] sides = new int[times];
-			examine:
-			int sum = 0;	// Store the length of broken sticks
-			for (int i = 0; i < sides.GetLength(0) - 1; i++) {
-				sides[i] = ran.Next(1, length - sum);
-				sum += sides[i];
-			}
-			if (sum == length) {
-				goto examine;
-			}
+			//examine:
+			int sum = length;	// Store the length of broken sticks
+			do {
+				sum = 0;
+				for (int i = 0; i < sides.GetLength(0) - 1; i++) {
+					sides[i] = ran.Next(1, length - sum);
+					sum += sides[i];
+				}
+			} while (sum == length);
+			//if (sum == length) {
+			//	goto examine;
+			//}
 			sides[sides.GetLength(0) - 1] = length - sum;
 			sort(sides);
 			return sides;
