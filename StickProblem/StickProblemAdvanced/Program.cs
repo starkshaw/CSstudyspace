@@ -14,8 +14,10 @@ namespace StickProblemAdvanced {
 				File.Delete(string.Format(@"{0}\\output_advanced.txt", currentPath));
 			}
 			StickProblem.Stick stick = new StickProblem.Stick();
-			int[] test = stick.separate(5);
-			Console.WriteLine(string.Join(",", test));
+			for (int i = 0; i < 10; i++) {
+				int[] test = stick.separate(7);
+				Console.WriteLine(string.Join(",", test));
+			}
 		}
 	}
 }

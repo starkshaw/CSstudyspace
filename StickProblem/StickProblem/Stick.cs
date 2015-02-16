@@ -70,18 +70,19 @@ namespace StickProblem {
 		/// <returns>An integer array consists lengths of broken sticks.</returns>
 		public int[] separate(int times) {
 			int[] sides = new int[times];
-			//examine:
-			int sum = circumferrence;	// Store the length of broken sticks
-			do {
-				sum = 0;
-				for (int i = 0; i < sides.GetLength(0) - 1; i++) {
+			examine:
+			int sum = 0;
+			for (int i = 0; i < sides.GetLength(0) - 1; i++) {
+				if (sum != circumferrence) {
 					sides[i] = ran.Next(1, circumferrence - sum);
 					sum += sides[i];
+				} else {
+					goto examine;
 				}
-			} while (sum == circumferrence);
-			//if (sum == length) {
-			//	goto examine;
-			//}
+			}
+			if (sum == circumferrence) {
+				goto examine;				// If the sum except last piece is already equals to the circumferrence then back to generate anoth group
+			}
 			sides[sides.GetLength(0) - 1] = circumferrence - sum;
 			sort(sides);
 			return sides;
