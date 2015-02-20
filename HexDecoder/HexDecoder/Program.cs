@@ -26,6 +26,9 @@ namespace HexDecoder {
 			} catch (System.OverflowException) {
 				Console.WriteLine("\nOverflow value detected, abort.");
 				Environment.Exit(1);
+			} catch (System.FormatException) {
+				Console.WriteLine("\nInvalid code type, abort.");
+				Environment.Exit(1);
 			}
 		}
 	}
