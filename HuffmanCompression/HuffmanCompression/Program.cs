@@ -44,7 +44,7 @@ namespace HuffmanCompression {
 					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);
 					// Non-ASCII characters Warning
 					if (ascii_CodeTable[63] != 0) {
-						Console.WriteLine("\nWARNING: Non-ASCII characters will be converted to '?' (ASCII: 63).");
+						Console.WriteLine("\nWARNING: Non-ASCII character will be converted to '?' (ASCII: 63).");
 						Console.WriteLine("Use '-ascii' argument to check the supported ASCII code table.");
 					}
 					// ASCII Control or invisible characters Warning
@@ -63,7 +63,7 @@ namespace HuffmanCompression {
 				printAsciiTable();
 				Environment.Exit(0);
 			} else {	// Error argument handle
-				Console.WriteLine("Invalid argument(s): {0}", string.Join(" ", args));
+				Console.WriteLine("\nInvalid argument(s): {0}", string.Join(" ", args));
 			}
 		}
 
