@@ -49,6 +49,7 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 **Check, accumulate and summarize the ASCII code in one string.**
 - [Program.cs](HuffmanCompression/HuffmanCompression/Program.cs) - The main class.
 
-### UTF-16 BE Decorder
-**Decode hexadecimal UTF-16BE code into normal UTF-16BE text.**
-- [Program.cs](HexDecoder/HexDecoder/Program.cs) - The main class.
+### UTF-16 BE Decoder and Encoder
+**Convert UTF-16 BE hexadecimal code into plain text, or vice versa.**
+- [Decoder](HexDecoder/HexDecoder/Program.cs) - The Decoder Solution.
+- [Encoder](HexEncoder/HexEncoder/Program.cs) - The Encoder Solution.
