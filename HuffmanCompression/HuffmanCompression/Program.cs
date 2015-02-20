@@ -39,7 +39,7 @@ namespace HuffmanCompression {
 					// Print out
 					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);
 					if (ascii_CodeTable[63] != 0) {
-						Console.WriteLine("\nWARNING: Non-ASCII characters will be convert to '?' (ASCII: 63).");
+						Console.WriteLine("\nWARNING: Non-ASCII characters will be converted to '?' (ASCII: 63).");
 						Console.WriteLine("Use '-ascii' argument to check the supported ASCII code table.");
 					}
 				} catch (System.ArgumentNullException) {		// Exception Handle
@@ -49,7 +49,7 @@ namespace HuffmanCompression {
 			} else if (args[0].Equals("-ascii", StringComparison.InvariantCultureIgnoreCase)) {	// Ignore Case in argument
 				printAsciiTable();
 			} else {	// Error argument handle
-				Console.WriteLine("Invalid argument: {0}", string.Join(" ", args));
+				Console.WriteLine("Invalid argument(s): {0}", string.Join(" ", args));
 			}
 		}
 
