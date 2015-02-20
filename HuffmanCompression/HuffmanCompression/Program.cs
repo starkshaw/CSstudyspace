@@ -19,7 +19,11 @@ namespace HuffmanCompression {
 				string str = Console.ReadLine();
 				try {
 					byte[] ascii = Encoding.ASCII.GetBytes(str);	// Convert string into byte array which consists by the ASCII code of each character
-					Console.WriteLine("\nThe ASCII code are: {0}", string.Join(", ", ascii));
+					Console.WriteLine("\nThe decimal ASCII code are: {0}", string.Join(", ", ascii));
+					Console.Write("\nThe binary ASCII code are: ");
+					printByteInBin(ascii);
+					Console.Write("\nThe hexadecimal ASCII code are: ");
+					printByteInHex(ascii);
 					// Accumulate
 					for (int i = 0; i < ascii.Length; i++) {
 						ascii_CodeTable[ascii[i]]++;		// Get the ASCII value from the string above and store the amount
@@ -151,6 +155,29 @@ namespace HuffmanCompression {
 				}
 				Console.WriteLine();
 			}
+		}
+
+		/// <summary>
+		/// Print out a byte array in binary string, length fixed as 7-bit.
+		/// </summary>
+		/// <param name="input">Input byte array</param>
+		public static void printByteInBin(byte[] input) {
+			try {
+				for (int i = 0; i < input.Length - 1; i++) {
+					Console.Write("{0}, ", Convert.ToString(input[i], 2).PadLeft(7, '0'));
+				}
+				Console.WriteLine("{0}", Convert.ToString(input[input.Length - 1], 2).PadLeft(7, '0'));
+			} catch (System.IndexOutOfRangeException) {
+				Console.Write("\n");
+			}
+		}
+
+		/// <summary>
+		/// Print out a byte array in hexadecimal string.
+		/// </summary>
+		/// <param name="input">Input byte array</param>
+		public static void printByteInHex(byte[] input) {
+			Console.WriteLine(BitConverter.ToString(input).Replace("-", ", "));
 		}
 	}
 }
