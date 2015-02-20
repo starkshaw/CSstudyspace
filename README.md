@@ -51,4 +51,4 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 
 ### UTF-16 BE Decorder
 **Decode hexadecimal UTF-16BE code into normal UTF-16BE text.**
-- [Program.cs](HexDecoder/HexDecorder/Program.cs) - The main class.
+- [Program.cs](HexDecoder/HexDecoder/Program.cs) - The main class.
