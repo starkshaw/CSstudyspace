@@ -46,5 +46,9 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 - [Stick.cs](StickProblem/StickProblem/Stick.cs) - The Stick class controls the operation of stick.
 
 ### Huffman Compression
-**Check, Accumulate and Summarize the ASCII code in one string.**
+**Check, accumulate and summarize the ASCII code in one string.**
 - [Program.cs](HuffmanCompression/HuffmanCompression/Program.cs) - The main class.
+
+### UTF-16 BE Decorder
+**Decode hexadecimal UTF-16BE code into normal UTF-16BE text.**
+- [Program.cs](HexDecoder/HexDecorder/Program.cs) - The main class.
