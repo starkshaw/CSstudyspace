@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexDecorder", "HexDecorder\HexDecorder.csproj", "{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}.Debug|x86.ActiveCfg = Debug|x86
+		{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}.Debug|x86.Build.0 = Debug|x86
+		{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}.Release|x86.ActiveCfg = Release|x86
+		{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
