@@ -8,8 +8,8 @@
     <ProjectGuid>{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HexDecorder</RootNamespace>
-    <AssemblyName>HexDecorder</AssemblyName>
+    <RootNamespace>HexDecoder</RootNamespace>
+    <AssemblyName>HexDecoder</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

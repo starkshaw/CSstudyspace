@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexDecorder", "HexDecorder\HexDecorder.csproj", "{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexDecoder", "HexDecoder\HexDecoder.csproj", "{ABC80FA9-E0E1-41B2-B43A-677F5EE077DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
