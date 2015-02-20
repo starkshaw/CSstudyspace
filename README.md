@@ -44,3 +44,7 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 **Once again about Monte Carlo Simulation. This project is about a stick simulation. Break a stick randomly into 3 pieces, calculate the probability of form those 3 pieces into triangle.**
 - [Program.cs](StickProblem/StickProblem/Program.cs) - The main class.
 - [Stick.cs](StickProblem/StickProblem/Stick.cs) - The Stick class controls the operation of stick.
+
+### Huffman Compression
+**Check, Accumulate and Summarize the ASCII code in one string.**
+- [Program.cs](HuffmanCompression/HuffmanCompression/Program.cs) - The main class.
