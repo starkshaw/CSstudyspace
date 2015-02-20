@@ -8,9 +8,9 @@ namespace HuffmanCompression {
 		public static void Main(string[] args) {
 			if (args.Length == 0) {
 				// Initialize
-				int[] ascii_CodeTable = new int[128];			// Count the occurrence of ASCII characters.
-				char[] ascii_Name = new char[128];				// Save the corresponding character to the ASCII name table, e.g. in 65th slot it store 'A'.
-				double[] ratio = new double[128];				// Store the ratio of one character to the whole string.
+				int[] ascii_CodeTable = new int[128];			// Count the occurrence of ASCII characters
+				char[] ascii_Name = new char[128];				// Save the corresponding character to the ASCII name table, e.g. in 65th slot it store 'A'
+				double[] ratio = new double[128];				// Store the ratio of one character to the whole string
 				for (int i = 0; i < ascii_Name.Length; i++) {
 					ascii_Name[i] = Convert.ToChar(i);
 				}
@@ -18,11 +18,11 @@ namespace HuffmanCompression {
 				Console.Write("\nEnter a string: ");
 				string str = Console.ReadLine();
 				try {
-					byte[] ascii = Encoding.ASCII.GetBytes(str);
+					byte[] ascii = Encoding.ASCII.GetBytes(str);	// Convert string into byte array which consists by the ASCII code of each character
 					Console.WriteLine("\nThe ASCII code are: {0}", string.Join(", ", ascii));
 					// Accumulate
 					for (int i = 0; i < ascii.Length; i++) {
-						ascii_CodeTable[ascii[i]]++;		// Get the ASCII value from the string above and store the amount.
+						ascii_CodeTable[ascii[i]]++;		// Get the ASCII value from the string above and store the amount
 					}
 					// Obtain Ratio
 					for (int i = 0; i < ratio.Length; i++) {
@@ -40,13 +40,14 @@ namespace HuffmanCompression {
 							}
 						}
 					}
-					// Print out
+					// Print out the amount of character
 					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);
 					// Non-ASCII characters Warning
 					if (ascii_CodeTable[63] != 0) {
 						Console.WriteLine("\nWARNING: Non-ASCII characters will be converted to '?' (ASCII: 63).");
 						Console.WriteLine("Use '-ascii' argument to check the supported ASCII code table.");
 					}
+					// ASCII Control or invisible characters Warning
 					for (int i = 0; i < ascii_CodeTable.Length; i++) {
 						if ((i <= 32 || i == 127) && (ascii_CodeTable[i] != 0)) {
 							Console.WriteLine("\nWARNING: ASCII Control or invisible character(s) have been detected.");
