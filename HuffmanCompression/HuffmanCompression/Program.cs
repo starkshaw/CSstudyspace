@@ -33,19 +33,19 @@ namespace HuffmanCompression {
 						ratio[i] = (double)(ascii_CodeTable[i]) / (double)(ascii.Length);
 					}
 					// Summarize
-					Console.WriteLine("\nSUMMARIZE TABLE");
-					Console.WriteLine("ASCII\tCHAR\tAMOUNT\tRATIO");
+					Console.WriteLine("\nSUMMARIZE");
+					Console.WriteLine("ASCII (DEC)\tCHAR\tAMOUNT\tRATIO");
 					for (int i = 0; i < ascii_CodeTable.Length; i++) {
 						if (ascii_CodeTable[i] != 0) {
 							if (i != 9) {
-								Console.WriteLine("{0}\t{1}\t{2}\t{3}%", i, Convert.ToChar(ascii_Name[i]), ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
+								Console.WriteLine("{0}\t\t{1}\t{2}\t{3}%", i, Convert.ToChar(ascii_Name[i]), ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
 							} else {		// Tab character exception handle
-								Console.WriteLine("{0}\t\t{1}\t{2}%", i, ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
+								Console.WriteLine("{0}\t\t\t{1}\t{2}%", i, ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
 							}
 						}
 					}
 					// Print out the amount of character
-					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);
+					Console.WriteLine("\nN/A\t\tN/A\t{0}\tN/A", ascii.Length);
 					// Non-ASCII characters Warning
 					if (ascii_CodeTable[63] != 0) {
 						Console.WriteLine("\nWARNING: Non-ASCII character will be converted to '?' (ASCII: 63).");
@@ -80,18 +80,18 @@ namespace HuffmanCompression {
 				ascii_Name[i] = Convert.ToChar(i);
 			}
 			// Testing the table
-			Console.WriteLine("\nCODE\tCHAR");
+			Console.WriteLine("\nASCII (DEC)\tCHAR");
 			for (int i = 0; i < ascii_Name.Length; i++) {
 				if (i == 8) {
-					Console.Write("{0}\t(BS)\tbackspace", i);
+					Console.Write("{0}\t\t(BS)\tbackspace", i);
 				} else if (i == 9) {
-					Console.Write("{0}\t(TAB)\thorizontal tab", i);
+					Console.Write("{0}\t\t(TAB)\thorizontal tab", i);
 				} else if (i == 10) {
-					Console.Write("{0}\t(LF)\tline feed, new line", i);
+					Console.Write("{0}\t\t(LF)\tline feed, new line", i);
 				} else if (i == 13) {
-					Console.Write("{0}\t(CR)\tcarriage return", i);
+					Console.Write("{0}\t\t(CR)\tcarriage return", i);
 				} else {
-					Console.Write("{0}\t{1}", i, ascii_Name[i]);
+					Console.Write("{0}\t\t{1}", i, ascii_Name[i]);
 					if (i == 0) {
 						Console.Write(" (NUL)\tnull");
 					} else if (i == 1) {
