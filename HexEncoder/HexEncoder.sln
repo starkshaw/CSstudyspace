@@ -5,12 +5,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexEncoder", "HexEncoder\He
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Debug|x64.ActiveCfg = Debug|x64
+		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Debug|x64.Build.0 = Debug|x64
 		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Debug|x86.ActiveCfg = Debug|x86
 		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Debug|x86.Build.0 = Debug|x86
+		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Release|x64.ActiveCfg = Release|x64
+		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Release|x64.Build.0 = Release|x64
 		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Release|x86.ActiveCfg = Release|x86
 		{7C5DE8BE-F991-4826-8E00-000BABD60987}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
