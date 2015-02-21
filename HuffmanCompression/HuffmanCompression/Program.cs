@@ -34,18 +34,18 @@ namespace HuffmanCompression {
 					}
 					// Summarize
 					Console.WriteLine("\nSUMMARIZE");
-					Console.WriteLine("ASCII (DEC)\tCHAR\tAMOUNT\tRATIO");
+					Console.WriteLine("ASCII\tCHAR\tAMOUNT\tRATIO");
 					for (int i = 0; i < ascii_CodeTable.Length; i++) {
 						if (ascii_CodeTable[i] != 0) {
 							if (i != 9) {
-								Console.WriteLine("{0}\t\t{1}\t{2}\t{3}%", i, Convert.ToChar(ascii_Name[i]), ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
+								Console.WriteLine("{0}\t{1}\t{2}\t{3}%", i, Convert.ToChar(ascii_Name[i]), ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
 							} else {		// Tab character exception handle
-								Console.WriteLine("{0}\t\t\t{1}\t{2}%", i, ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
+								Console.WriteLine("{0}\t\t{1}\t{2}%", i, ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
 							}
 						}
 					}
 					// Print out the amount of character
-					Console.WriteLine("\nN/A\t\tN/A\t{0}\tN/A", ascii.Length);
+					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);
 					// Non-ASCII characters Warning
 					if (ascii_CodeTable[63] != 0) {
 						Console.WriteLine("\nWARNING: Non-ASCII character will be converted to '?' (ASCII: 63).");
@@ -80,81 +80,82 @@ namespace HuffmanCompression {
 				ascii_Name[i] = Convert.ToChar(i);
 			}
 			// Testing the table
-			Console.WriteLine("\nASCII (DEC)\tCHAR");
+			Console.WriteLine("\nASCII\tCHAR\tCARET\tDESCRIPTION");
 			for (int i = 0; i < ascii_Name.Length; i++) {
 				if (i == 8) {
-					Console.Write("{0}\t\t(BS)\tbackspace", i);
+					Console.Write("{0}\t(BS)\t^H\tbackspace", i);
 				} else if (i == 9) {
-					Console.Write("{0}\t\t(TAB)\thorizontal tab", i);
+					Console.Write("{0}\t(TAB)\t^I\thorizontal tab", i);
 				} else if (i == 10) {
-					Console.Write("{0}\t\t(LF)\tline feed, new line", i);
+					Console.Write("{0}\t(LF)\t^J\tline feed", i);
 				} else if (i == 13) {
-					Console.Write("{0}\t\t(CR)\tcarriage return", i);
+					Console.Write("{0}\t(CR)\t^M\tcarriage return", i);
 				} else {
-					Console.Write("{0}\t\t{1}", i, ascii_Name[i]);
+					Console.Write("{0}\t{1}", i, ascii_Name[i]);
 					if (i == 0) {
-						Console.Write(" (NUL)\tnull");
+						Console.Write(" (NUL)\t^@\tnull");
 					} else if (i == 1) {
-						Console.Write(" (SOH)\tstark of heading");
+						Console.Write(" (SOH)\t^A\tstart of heading");
 					} else if (i == 2) {
-						Console.Write(" (STX)\tstart of text");
+						Console.Write(" (STX)\t^B\tstart of text");
 					} else if (i == 3) {
-						Console.Write(" (ETX)\tend of text");
+						Console.Write(" (ETX)\t^C\tend of text");
 					} else if (i == 4) {
-						Console.Write(" (EOT)\tend of transmission");
+						Console.Write(" (EOT)\t^D\tend of transmission");
 					} else if (i == 5) {
-						Console.Write(" (ENQ)\tenquiry");
+						Console.Write(" (ENQ)\t^E\tenquiry");
 					} else if (i == 6) {
-						Console.Write(" (ACK)\tacknowledge");
+						Console.Write(" (ACK)\t^F\tacknowledge");
 					} else if (i == 7) {
-						Console.Write(" (BEL)\tbell");
+						Console.Write(" (BEL)\t^G\tbell");
 					} else if (i == 11) {
-						Console.Write(" (VT)\tvertical tab");
+						Console.Write(" (VT)\t^K\tvertical tab");
 					} else if (i == 12) {
-						Console.Write(" (FF)\tNP form feed, new line");
+						Console.Write(" (FF)\t^L\tform feed");
 					} else if (i == 14) {
-						Console.Write(" (SO)\tshift out");
+						Console.Write(" (SO)\t^N\tshift out");
 					} else if (i == 15) {
-						Console.Write(" (SI)\tshift in");
+						Console.Write(" (SI)\t^O\tshift in");
 					} else if (i == 16) {
-						Console.Write(" (DLE)\tdata link escape");
+						Console.Write(" (DLE)\t^P\tdata link escape");
 					} else if (i == 17) {
-						Console.Write(" (DC1)\tdevice control 1");
+						Console.Write(" (DC1)\t^Q\tdevice control 1 (XON)");
 					} else if (i == 18) {
-						Console.Write(" (DC2)\tdevice control 2");
+						Console.Write(" (DC2)\t^R\tdevice control 2");
 					} else if (i == 19) {
-						Console.Write(" (DC3)\tdevice control 3");
+						Console.Write(" (DC3)\t^S\tdevice control 3 (XOFF)");
 					} else if (i == 20) {
-						Console.Write(" (DC4)\tdevice control 4");
+						Console.Write(" (DC4)\t^T\tdevice control 4");
 					} else if (i == 21) {
-						Console.Write(" (NAK)\tnegative acknowledge");
+						Console.Write(" (NAK)\t^U\tnegative acknowledge");
 					} else if (i == 22) {
-						Console.Write(" (SYN)\tsynchronous idle");
+						Console.Write(" (SYN)\t^V\tsynchronous idle");
 					} else if (i == 23) {
-						Console.Write(" (ETB)\tend of trans, block");
+						Console.Write(" (ETB)\t^W\tend transmission block");
 					} else if (i == 24) {
-						Console.Write(" (CAN)\tcancel");
+						Console.Write(" (CAN)\t^X\tcancel");
 					} else if (i == 25) {
-						Console.Write(" (EM)\tend of medium");
+						Console.Write(" (EM)\t^Y\tend of medium");
 					} else if (i == 26) {
-						Console.Write(" (SUB)\tsubstitute");
+						Console.Write(" (SUB)\t^Z\tsubstitute");
 					} else if (i == 27) {
-						Console.Write(" (ESC)\tescape");
+						Console.Write(" (ESC)\t^[\tescape");
 					} else if (i == 28) {
-						Console.Write(" (FS)\tfile separator");
+						Console.Write(" (FS)\t^\\\tfile separator");
 					} else if (i == 29) {
-						Console.Write(" (GS)\tgroup separator");
+						Console.Write(" (GS)\t^]\tgroup separator");
 					} else if (i == 30) {
-						Console.Write(" (RS)\trecord separator");
+						Console.Write(" (RS)\t^^\trecord separator");
 					} else if (i == 31) {
-						Console.Write(" (US)\tunit separator");
+						Console.Write(" (US)\t^_\tunit separator");
 					} else if (i == 32) {
-						Console.Write(" (SPACE)");
+						Console.Write(" (SP)\t\tspace");
 					} else if (i == 127)
-						Console.Write(" (DEL)");
+						Console.Write(" (DEL)\t^?\tdelete");
 				}
 				Console.WriteLine();
 			}
+			Console.WriteLine("\nNote: ASCII Code using decimal if not emphasized, CARET stands for Caret Notation.");
 		}
 
 		/// <summary>
