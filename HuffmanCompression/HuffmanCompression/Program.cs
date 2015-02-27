@@ -34,6 +34,8 @@ namespace HuffmanCompression {
 					}
 					// Summarize
 					Console.WriteLine("\nSUMMARIZE");
+					// Order by ASCII code
+					Console.WriteLine("\nORDER BY ASCII CODE");
 					Console.WriteLine("ASCII\tCHAR\tAMOUNT\tRATIO");
 					for (int i = 0; i < ascii_CodeTable.Length; i++) {
 						if (ascii_CodeTable[i] != 0) {
@@ -43,6 +45,13 @@ namespace HuffmanCompression {
 								Console.WriteLine("{0}\t\t{1}\t{2}%", i, ascii_CodeTable[i], Math.Round(ratio[i] * 100, 2));
 							}
 						}
+					}
+					// Order by the frequency
+					Console.WriteLine("\nORDER BY FREQUENCY");
+					Console.WriteLine("ASCII\tCHAR\tAMOUNT\tRATIO");
+					int[,] freqTable = sortByFrequency(ascii_CodeTable);
+					for (int i = 0; i < freqTable.GetLength(0); i++) {
+						Console.WriteLine("{0}\t{1}\t{2}\t{3}%", freqTable[i, 0], Convert.ToChar(freqTable[i, 0]), freqTable[i, 1], Math.Round(ratio[freqTable[i, 0]] * 100, 2));
 					}
 					// Print out the amount of character
 					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);
@@ -179,6 +188,55 @@ namespace HuffmanCompression {
 		/// <param name="input">Input byte array</param>
 		public static void printByteInHex(byte[] input) {
 			Console.WriteLine(BitConverter.ToString(input).Replace("-", ", "));
+		}
+
+		/// <summary>
+		/// Sort the raw ASCII count table by frequency.
+		/// </summary>
+		/// <param name="asciiCountTable">The original count table.</param>
+		/// <returns>Sorted array consists by: Col 1 ASCII Code, Col 2 Amount</returns>
+		public static int[,] sortByFrequency(int[] asciiCountTable) {
+			// Count the row of output array
+			int row = 0;
+			for (int i = 0; i < asciiCountTable.Length; i++) {
+				if (asciiCountTable[i] != 0) {
+					row++;
+				}
+			}
+			int[,] ans = new int[row, 2];	// Column 1 list the ASCII code, Column 2 list the amount
+			// Summarize the existed characters
+			int tmp = 0;	// Count row
+			for (int i = 0; i < asciiCountTable.Length; i++) {
+				if (asciiCountTable[i] != 0) {
+					ans[tmp, 0] = i;
+					ans[tmp, 1] = asciiCountTable[i];
+					tmp++;
+				}
+			}
+			// Sort
+			for (int i = 0; i < ans.GetLength(0); i++) {
+				int tmp_sort_0 = 0;	// Store the temporary value in column 1
+				int tmp_sort_1 = 0;	// Store the temporary value in column 2
+				for (int j = ans.GetLength(0) - 1; j > i; j--) {
+					if (ans[j, 1] > ans[j - 1, 1]) {
+						tmp_sort_0 = ans[j - 1, 0];
+						tmp_sort_1 = ans[j - 1, 1];
+						ans[j - 1, 0] = ans[j, 0];
+						ans[j - 1, 1] = ans[j, 1];
+						ans[j, 0] = tmp_sort_0;
+						ans[j, 1] = tmp_sort_1;
+					}
+				}
+			}
+			// Test
+			/*
+			for (int i = 0; i < ans.GetLength(0); i++) {
+				for (int j = 0; j < ans.GetLength(1); j++) {
+					Console.Write("{0} ", ans[i, j]);
+				}
+				Console.WriteLine();
+			}*/
+			return ans;
 		}
 	}
 }
