@@ -51,7 +51,11 @@ namespace HuffmanCompression {
 					Console.WriteLine("ASCII\tCHAR\tAMOUNT\tRATIO");
 					int[,] freqTable = sortByFrequency(ascii_CodeTable);
 					for (int i = 0; i < freqTable.GetLength(0); i++) {
-						Console.WriteLine("{0}\t{1}\t{2}\t{3}%", freqTable[i, 0], Convert.ToChar(freqTable[i, 0]), freqTable[i, 1], Math.Round(ratio[freqTable[i, 0]] * 100, 2));
+						if (freqTable[i, 0] != 9) {
+							Console.WriteLine("{0}\t{1}\t{2}\t{3}%", freqTable[i, 0], Convert.ToChar(freqTable[i, 0]), freqTable[i, 1], Math.Round(ratio[freqTable[i, 0]] * 100, 2));
+						} else {
+							Console.WriteLine("{0}{1}\t{2}\t{3}%", freqTable[i, 0], Convert.ToChar(freqTable[i, 0]), freqTable[i, 1], Math.Round(ratio[freqTable[i, 0]] * 100, 2));
+						}
 					}
 					// Print out the amount of character
 					Console.WriteLine("\nN/A\tN/A\t{0}\tN/A", ascii.Length);

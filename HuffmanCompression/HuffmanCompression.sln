@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuffmanCompression", "HuffmanCompression\HuffmanCompression.csproj", "{D6CE63D5-9396-4F2A-BC88-C20DA65931B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressionCalculator", "CompressionCalculator\CompressionCalculator.csproj", "{A7CB6DC8-B449-4973-9A3E-47B9683EA96E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{D6CE63D5-9396-4F2A-BC88-C20DA65931B5}.Debug|x86.Build.0 = Debug|x86
 		{D6CE63D5-9396-4F2A-BC88-C20DA65931B5}.Release|x86.ActiveCfg = Release|x86
 		{D6CE63D5-9396-4F2A-BC88-C20DA65931B5}.Release|x86.Build.0 = Release|x86
+		{A7CB6DC8-B449-4973-9A3E-47B9683EA96E}.Debug|x86.ActiveCfg = Debug|x86
+		{A7CB6DC8-B449-4973-9A3E-47B9683EA96E}.Debug|x86.Build.0 = Debug|x86
+		{A7CB6DC8-B449-4973-9A3E-47B9683EA96E}.Release|x86.ActiveCfg = Release|x86
+		{A7CB6DC8-B449-4973-9A3E-47B9683EA96E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
