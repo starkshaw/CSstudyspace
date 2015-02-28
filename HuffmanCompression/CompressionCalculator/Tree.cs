@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HuffmanCompression {
+namespace CompressionCalculator {
 	public class Tree {
-		public Node root;										// First node of tree
+		public Node<int> root;										// First node of tree
 		public int frequency = 0;
 		private int[] ascii_CodeTable = new int[128];			// Count the occurrence of ASCII characters
-		private double[] ratio = new double[128];						// Store the ratio of one character to the whole string
+		private double[] ratio = new double[128];				// Store the ratio of one character to the whole string
 		private int[,] freqTable;
 		// Constructor
 		public Tree(string str) {
@@ -16,7 +16,7 @@ namespace HuffmanCompression {
 				byte[] ascii = Encoding.ASCII.GetBytes(str);	// Convert string into byte array which consists by the ASCII code of each character
 				// Accumulate
 				for (int i = 0; i < ascii.Length; i++) {
-					ascii_CodeTable[ascii[i]]++;		// Get the ASCII value from the string above and store the amount
+					ascii_CodeTable[ascii[i]]++;				// Get the ASCII value from the string above and store the amount
 				}
 				// Obtain Ratio
 				for (int i = 0; i < ratio.Length; i++) {
@@ -24,6 +24,8 @@ namespace HuffmanCompression {
 				}
 				// Sort existed characters
 				freqTable = sortByFrequency(ascii_CodeTable);
+				// Build the binary tree
+				int root = ascii.Length;						// The length of root
 
 			} catch (System.ArgumentNullException) {			// Exception Handle
 				Console.WriteLine("\nInclude invalid character(s).");
@@ -96,6 +98,71 @@ namespace HuffmanCompression {
 				}
 			}
 			return ans;
+		}
+	}
+
+	// From MSDN
+	public class BinaryTreeNode<T> : Node<T> {
+		public BinaryTreeNode() : base() { }
+		public BinaryTreeNode(T data) : base(data, null) { }
+		public BinaryTreeNode(T data, BinaryTreeNode<T> left, BinaryTreeNode<T> right) {
+			base.Value = data;
+			NodeList<T> children = new NodeList<T>(2);
+			children[0] = left;
+			children[1] = right;
+
+			base.Neighbors = children;
+		}
+
+		public BinaryTreeNode<T> Left {
+			get {
+				if (base.Neighbors == null)
+					return null;
+				else
+					return (BinaryTreeNode<T>)base.Neighbors[0];
+			}
+			set {
+				if (base.Neighbors == null)
+					base.Neighbors = new NodeList<T>(2);
+
+				base.Neighbors[0] = value;
+			}
+		}
+
+		public BinaryTreeNode<T> Right {
+			get {
+				if (base.Neighbors == null)
+					return null;
+				else
+					return (BinaryTreeNode<T>)base.Neighbors[1];
+			}
+			set {
+				if (base.Neighbors == null)
+					base.Neighbors = new NodeList<T>(2);
+
+				base.Neighbors[1] = value;
+			}
+		}
+	}
+
+	public class BinaryTree<T> {
+		private BinaryTreeNode<T> root;
+
+		public BinaryTree() {
+			root = null;
+		}
+
+		public virtual void Clear() {
+			root = null;
+		}
+
+		public BinaryTreeNode<T> Root {
+			get {
+				return root;
+			}
+			set {
+				root = value;
+			}
 		}
 	}
 }
