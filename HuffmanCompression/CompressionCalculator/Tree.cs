@@ -26,7 +26,10 @@ namespace CompressionCalculator {
 				freqTable = sortByFrequency(ascii_CodeTable);
 				// Build the binary tree
 				int root = ascii.Length;						// The length of root
-
+				int curFreq = 0;								// Calculate the frequency
+				while (curFreq != root) {
+					
+				}
 			} catch (System.ArgumentNullException) {			// Exception Handle
 				Console.WriteLine("\nInclude invalid character(s).");
 				Environment.Exit(1);

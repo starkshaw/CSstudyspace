@@ -8,6 +8,7 @@ namespace CompressionCalculator {
 		public static void Main(string[] args) {
 			Tree test = new Tree("What the hell");
 			test.printFreqTable();
+			
 		}
 	}
 }
