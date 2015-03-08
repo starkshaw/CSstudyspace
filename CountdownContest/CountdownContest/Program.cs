@@ -84,23 +84,23 @@ namespace CountdownContest {
 		/// <param name="str">The string wait to be examined</param>
 		/// <returns>A int array consist ASCII index (Column 0) and frequency (Column 1)</returns>
 		static int[,] getAsciiFreq(string str) {
-			byte[] code = Encoding.ASCII.GetBytes(str);
-			int[] asciiFreq = new int[128];
-			int nonzero = 0;
-			for (int i = 0; i < str.Length; i++) {
+			byte[] code = Encoding.ASCII.GetBytes(str);		// Get the ASCII code array of string
+			int[] asciiFreq = new int[128];					// ASCII Frequency table
+			int nonzero = 0;								// Non-zero frequency in ASCII Frequency table
+			for (int i = 0; i < str.Length; i++) {			// Store the frequencies
 				asciiFreq[code[i]]++;
 			}
-			for (int i = 0; i < asciiFreq.Length; i++) {
+			for (int i = 0; i < asciiFreq.Length; i++) {	// Count the non-zero frequency
 				if (asciiFreq[i] != 0) {
 					nonzero++;
 				}
 			}
-			int[,] result = new int[nonzero, 2];
-			int count = 0;
+			int[,] result = new int[nonzero, 2];			// Initialize the output array
+			int count = 0;									// Inner count
 			for (int i = 0; i < asciiFreq.Length; i++) {
 				if (asciiFreq[i] != 0) {
-					result[count, 0] = i;
-					result[count, 1] = asciiFreq[i];
+					result[count, 0] = i;					// Column 0: ASCII index
+					result[count, 1] = asciiFreq[i];		// Column 1: Frequency
 					count++;
 				}
 			}
@@ -114,17 +114,17 @@ namespace CountdownContest {
 		/// <param name="b">array b</param>
 		/// <returns>If they are exactly same return true, otherwise false.</returns>
 		static bool compareArrays(int[,] a, int[,] b) {
-			bool result = false;
-			if (a.GetLength(0) == b.GetLength(0) && a.GetLength(1) == b.GetLength(1)) {
+			bool result = false;		// Default
+			if (a.GetLength(0) == b.GetLength(0) && a.GetLength(1) == b.GetLength(1)) {		// Examine if lengths are same
 				for (int i = 0; i < a.GetLength(0); i++) {
 					for (int j = 0; j < a.GetLength(1); j++) {
-						if (a[i, j] == b[i, j]) {
+						if (a[i, j] == b[i, j]) {											// Examine each elements in arrays
 							//Console.WriteLine("{0}\t{1}\tTRUE", a[i, j], b[i, j]);
 							result = true;
 						} else {
 							//Console.WriteLine("{0}\t{1}\tFALSE", a[i, j], b[i, j]);
 							result = false;
-							goto false_detect;
+							goto false_detect;		// If find any inequal value direct jump to return false
 						}
 					}
 				}
