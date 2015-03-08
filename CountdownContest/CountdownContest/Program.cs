@@ -7,15 +7,22 @@ using System.IO;
 namespace CountdownContest {
 	class Program {
 		static void Main(string[] args) {
-			string workingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+			string workingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);	// The location of executable file
+			string userDic = "";	// If user defines a dictionary it could store the path here
+		start:
 			try {
 				Console.Write("Reading dictionary... ");
-				string[] dic = File.ReadAllLines(string.Format(@"{0}\dictionary.txt", workingPath));	// Read the dictionary
+				string[] dic;		// Store each line from dictionary file
+				if (userDic.Length == 0) {
+					dic = File.ReadAllLines(string.Format(@"{0}\dictionary.txt", workingPath));	// Read the dictionary
+				} else {
+					dic = File.ReadAllLines(string.Format(@"{0}", userDic));	// Read user defined dictionary
+				}
 				string userStr, lowerStr;	// userStr store the string user entered, lowerStr convert it into lower case
 				int count = 0;				// Count the amount of result
 				Console.WriteLine("Done.\n");
 				Console.Write("Enter the random string: ");
-				userStr = Console.ReadLine();			// Raw data
+				userStr = Console.ReadLine();			// Raw user data
 				lowerStr = userStr.ToLower();			// Convert to lower case
 				int[,] userFreq = getAsciiFreq(lowerStr);	// Generate user string ASCII frequency table
 				Console.WriteLine("\nRESULTS:");
@@ -29,7 +36,7 @@ namespace CountdownContest {
 				if (count == 0) {
 					Console.WriteLine("\nNot found.");
 				} else {
-					Console.WriteLine("\n{0} result{1} found.", count, count==1 ? "" : "s");	// Include plural handler
+					Console.WriteLine("\n{0} result{1} found.", count, count == 1 ? "" : "s");	// Include plural handler
 				}
 				/*int[,] test1 = getAsciiFreq("saxophone");
 				int[,] test2 = getAsciiFreq("enophxoassssss");
@@ -50,10 +57,22 @@ namespace CountdownContest {
 				/*foreach (string str in dic) {
 					Console.WriteLine(str);
 				}*/
-			} catch (System.IO.FileNotFoundException) {		// File not found handler
-				Console.WriteLine("\n\nCannot find {0}\\dictionary.txt", workingPath);
-				Console.WriteLine("Abort.");
-				Environment.Exit(-1);
+			} catch (System.IO.FileNotFoundException) {					// File not found handler
+				Console.WriteLine("\n\nCannot find dictionary:");
+				if (userDic.Length == 0) {								// If user did not define a dictionary
+					Console.WriteLine(@"{0}\dictionary.txt", workingPath);
+				} else {												// If user dictionary cannot be found
+					Console.WriteLine("{0}", userDic);
+				}
+				Console.Write("\nLocate your dictionary, or press ENTER to exit: ");	// Define user dictionary or exit
+				userDic = Console.ReadLine();
+				if (userDic.Length == 0) {
+					Console.WriteLine("Abort.");
+					Environment.Exit(-1);		// Exit
+				} else {
+					Console.WriteLine();
+					goto start;					// back to start
+				}
 			} finally {
 
 			}
@@ -112,7 +131,7 @@ namespace CountdownContest {
 			} else {
 				result = false;
 			}
-			false_detect:
+		false_detect:
 			return result;
 		}
 	}
