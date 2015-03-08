@@ -127,18 +127,5 @@ namespace CountdownContest.Properties {
                 return ResourceManager.GetString("dictionary", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 艇Pv磛楔wwxw&gt;/w??/wv?&apos;?谐jp╦&gt;v?x吵jjwxw碭v?v鹷x镄衯鹶?vЦ?&apos;v鹷楔?&gt;&gt;vjjwб吵jw&gt;鹷jjw        ///
-        ///Y??ěQw鹷v?靔雏Цv&gt;/╦&apos;禧?w敞&apos;w╲川歆?吵Xwj&apos;wp?w歆x飆v&gt;Тv?&apos;歆/吵&apos;w&gt;w╦╦&apos;wjè&apos;歆?v&gt;wj&apos;雏vvj&apos;w??硏?j&apos;w/?xwЦw鹸v砐vj&apos;w?w&gt;wvv鹷?&gt;ě/?/v&gt;&gt;禳?w?v?砵w&gt;v楔j&apos;wp?
-        ///[?wТvw?ǜw&apos;?&gt;v#??&apos;xwЦw鹸v砐vj&apos;w?w&gt;wvw?竪&apos;??/v&gt;&gt;歆jèwwx雏鹷jjw鹶?竪&apos;吵?vjjw?/吵Xvjjw?wТ旄歙j&apos;飜jvw&gt;w╦w.?w?v?砵w&gt;v楔谐?ě??v辅&apos;&apos;铵衱w磜?wv???&apos;??竪&apos;??v&gt;&gt;w??&gt;&apos;v&apos;?^p?
-        ///(煨禧吵&gt;&apos;硍歆╦&apos;敞??w?歙胳歆?x╲/w?v?╲?w歆?wwj&apos;?j?w?硏???wǜww?承w&gt;wvXvjj靝?
-        ///EЛ歆jw?#えv??w&apos;wǜww?承w&gt;wj歆j吵?ě/w?v&gt;/?&apos;旄歆?承w&gt;w [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string encoded {
-            get {
-                return ResourceManager.GetString("encoded", resourceCulture);
-            }
-        }
     }
 }
