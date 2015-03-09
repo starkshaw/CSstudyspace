@@ -6,8 +6,6 @@ Study Space (C#)
 
 ***
 
-I am moving my Java projects into Visual C# .NET. Try to compare to the Java version to find differences between 2 languages.  
-
 All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, also fully tested on Windows 7 Ultimate 64-bit.  
 
 ### Find Prime Number (via Sieve of Eratothenes)
@@ -53,3 +51,7 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 **Convert UTF-16 BE hexadecimal code into plain text, or vice versa.**
 - [Decoder](HexDecoder/HexDecoder/Program.cs) - The Decoder Solution.
 - [Encoder](HexEncoder/HexEncoder/Program.cs) - The Encoder Solution.
+
+### Countdown Contest
+**Input a random string, find all matched words in the dictionary. Also support user-defined dictionary if default is missing.**
+- [Program.cs](CountdownContest/CountdownContest/Program.cs) - The main class.
