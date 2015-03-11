@@ -19,15 +19,34 @@ namespace Decryption {
 					amountOfChar++;
 				}
 			}*/
+			// Find space (assumed)
+			/*for (int i = 0; i < msg.Length; i++) {
+				if (msg[i] == 167) {
+					Console.WriteLine("{0}\t{1}\t{2}", msg[i - 1], msg[i], msg[i + 1]);
+				}
+			}*/
+			// Find keyword (assume de)
+			/*for (int i = 0; i < msg.Length; i++) {
+				if (msg[i] == 47 && msg[i + 2] == 167 && msg[i - 1] == 167) {
+					Console.WriteLine("{0}\t{1}\t{2}\t{3}", msg[i - 1], msg[i], msg[i + 1], msg[i + 2]);
+				}
+			}*/
+			// Find keyword (assume _e)
+			for (int i = 0; i < msg.Length; i++) {
+				if (msg[i] == 167 && msg[i + 1] == 119 && msg[i + 3] == 167) {
+					Console.WriteLine("{0}\t{1}\t{2}\t{3}", msg[i], msg[i + 1], msg[i + 2], msg[i + 3]);
+				}
+			}
+			// Summarize
 			for (int i = 0; i < buffer.Length; i++) {
 				amountOfChar += buffer[i];
 			}
 			for (int i = 0; i < buffer.Length; i++) {
 				if (buffer[i] != 0) {
-					Console.WriteLine("{0}\t{1}\t{2}\t{3}%\t{4}\t", i, string.Format("0x{0:X}", i), /*Convert.ToChar(i),*/ buffer[i], Math.Round((double)buffer[i]/(double)amountOfChar*100,2),Convert.ToString(i, 2).PadLeft(8,'0'));
+					Console.WriteLine("{0}\t{1}\t{2}\t{3}%\t{4}\t", i, string.Format("0x{0:X}", i), /*Convert.ToChar(i),*/ buffer[i], Math.Round((double)buffer[i] / (double)amountOfChar * 100, 2), Convert.ToString(i, 2).PadLeft(8, '0'));
 				}
 			}
-			Console.WriteLine("{0}\n", amountOfChar);
+			Console.WriteLine("\n{0}\n", amountOfChar);
 			/*string[] invertedBinary = new string[amountOfChar];
 			int count = 0;
 			for (int i = 0; i < buffer.Length; i++) {
