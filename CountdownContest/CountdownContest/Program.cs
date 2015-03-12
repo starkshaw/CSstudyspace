@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.IO;
@@ -25,7 +26,7 @@ namespace CountdownContest {
 				userStr = Console.ReadLine();			// Raw user data
 				lowerStr = userStr.ToLower();			// Convert to lower case
 				int[,] userFreq = getAsciiFreq(lowerStr);	// Generate user string ASCII frequency table
-				Console.WriteLine("\nRESULTS:");
+				Console.WriteLine("\nRESULT:");
 				for (int i = 0; i < dic.Length; i++) {
 					int[,] tmp = getAsciiFreq(dic[i]);		// Generate the frequency table of current string in dictionary
 					if (compareArrays(userFreq, tmp) == true) {	// Compare user table and current table, if true print out
@@ -34,7 +35,12 @@ namespace CountdownContest {
 					}
 				}
 				if (count == 0) {
-					Console.WriteLine("\nNot found.");
+					Console.WriteLine("\nNot found full set of string.\nNow tend to find incomplete set words with greatest length...");
+					ArrayList ans = fuzzySearch(lowerStr, dic);
+					Console.WriteLine(ans.Count);
+					for (int i = 0; i < ans.Count; i++) {
+						Console.WriteLine(ans[i]);
+					}
 				} else {
 					Console.WriteLine("\n{0} result{1} found.", count, count == 1 ? "" : "s");	// Include plural handler
 				}
@@ -132,6 +138,38 @@ namespace CountdownContest {
 				result = false;
 			}
 		false_detect:
+			return result;
+		}
+
+		static ArrayList fuzzySearch(string str, string[] dictionary) {
+			ArrayList result = new ArrayList();
+			for (int i = 0; i < dictionary.Length; i++) {
+				StringBuilder rawWord = new StringBuilder(dictionary[i]);
+				StringBuilder cmpWord = new StringBuilder(rawWord + "");
+				for (int j = 0; j < str.Length; j++) {
+					for (int k = 0; k < cmpWord.Length; k++) {
+						if (str[j] == cmpWord[k]) {
+							cmpWord.Insert(k, '0');
+							k = cmpWord.Length;
+						}
+					}
+				}
+				bool check = true;
+				for (int j = 0; j < cmpWord.Length; j++) {
+					if (cmpWord[j] != '0') {
+						check = false;
+					}
+				}
+				if (check == true) {
+					result.Add(rawWord);
+				}
+				int count = 0;
+				foreach (string s in result) {
+					if (s.Length > count) {
+						count = s.Length;
+					}
+				}
+			}
 			return result;
 		}
 	}
