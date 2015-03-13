@@ -40,7 +40,12 @@ namespace CountdownContest {
 					for (int i = 0; i < ans.Count; i++) {	// Print out
 						Console.WriteLine(ans[i]);
 					}
-					Console.WriteLine("\n{0} result{1} found.", ans.Count, ans.Count == 1 ? "" : "s");	// Plural handler
+					try{
+						Console.WriteLine("\n{0} result{1} found with {2} letter{3}.", ans.Count, ans.Count == 1 ? "" : "s", ans[0].ToString().Length, ans[0].ToString().Length == 1 ? "" : "s");	// Plural handler
+					} catch (ArgumentOutOfRangeException) {
+						Console.WriteLine("Not found.");
+						Environment.Exit(-1);
+					}
 				} else {
 					Console.WriteLine("\n{0} result{1} found.", count, count == 1 ? "" : "s");	// Include plural handler
 				}
@@ -64,7 +69,7 @@ namespace CountdownContest {
 					Console.WriteLine(str);
 				}*/
 			} catch (System.IO.FileNotFoundException) {					// File not found handler
-				Console.WriteLine("\n\n[WARNING] Cannot find dictionary:");
+				Console.WriteLine("\n\n[ERROR] Cannot find dictionary:");
 				if (userDic.Length == 0) {								// If user did not define a dictionary
 					Console.WriteLine(@"{0}\dictionary.txt", workingPath);
 				} else {												// If user dictionary cannot be found
