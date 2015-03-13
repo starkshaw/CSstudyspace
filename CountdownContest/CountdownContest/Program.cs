@@ -35,12 +35,12 @@ namespace CountdownContest {
 					}
 				}
 				if (count == 0) {
-					Console.WriteLine("\nNot found full set of string.\nNow tend to find incomplete set words with greatest length...");
+					Console.WriteLine("\n[WARNING] Not found full set of string.\n[WARNING] Now tend to find incomplete set words with greatest length...\n");	// Starting search incomplete set
 					ArrayList ans = fuzzySearch(lowerStr, dic);
-					Console.WriteLine(ans.Count);
-					for (int i = 0; i < ans.Count; i++) {
+					for (int i = 0; i < ans.Count; i++) {	// Print out
 						Console.WriteLine(ans[i]);
 					}
+					Console.WriteLine("\n{0} result{1} found.", ans.Count, ans.Count == 1 ? "" : "s");	// Plural handler
 				} else {
 					Console.WriteLine("\n{0} result{1} found.", count, count == 1 ? "" : "s");	// Include plural handler
 				}
@@ -64,7 +64,7 @@ namespace CountdownContest {
 					Console.WriteLine(str);
 				}*/
 			} catch (System.IO.FileNotFoundException) {					// File not found handler
-				Console.WriteLine("\n\nCannot find dictionary:");
+				Console.WriteLine("\n\n[WARNING] Cannot find dictionary:");
 				if (userDic.Length == 0) {								// If user did not define a dictionary
 					Console.WriteLine(@"{0}\dictionary.txt", workingPath);
 				} else {												// If user dictionary cannot be found
@@ -141,36 +141,48 @@ namespace CountdownContest {
 			return result;
 		}
 
+		/// <summary>
+		/// Find the incomplete set of user string in certain dictionary.
+		/// </summary>
+		/// <param name="str">User string</param>
+		/// <param name="dictionary">Certain dictionary</param>
+		/// <returns>An ArrayList consists the possible strings with greatest length.</returns>
 		static ArrayList fuzzySearch(string str, string[] dictionary) {
-			ArrayList result = new ArrayList();
+			ArrayList postResult = new ArrayList();		// All results
+			ArrayList finalResult = new ArrayList();	// Results with greatest length
 			for (int i = 0; i < dictionary.Length; i++) {
-				StringBuilder rawWord = new StringBuilder(dictionary[i]);
-				StringBuilder cmpWord = new StringBuilder(rawWord + "");
+				StringBuilder cmpStr = new StringBuilder(dictionary[i]);	// The string will be compare in process
+				StringBuilder rawStr = new StringBuilder(cmpStr + "");		// The original string
 				for (int j = 0; j < str.Length; j++) {
-					for (int k = 0; k < cmpWord.Length; k++) {
-						if (str[j] == cmpWord[k]) {
-							cmpWord.Insert(k, '0');
-							k = cmpWord.Length;
+					for (int k = 0; k < cmpStr.Length; k++) {
+						if (str[j] == cmpStr[k]) {
+							cmpStr[k] = '0';		// If characters are exist, replace by 0
+							k = cmpStr.Length;
 						}
 					}
 				}
-				bool check = true;
-				for (int j = 0; j < cmpWord.Length; j++) {
-					if (cmpWord[j] != '0') {
-						check = false;
+				bool check = true;		// Check if it is possible
+				for (int j = 0; j < cmpStr.Length; j++) {
+					if (cmpStr[j] != '0') {
+						check = false;	// Impossible
 					}
 				}
 				if (check == true) {
-					result.Add(rawWord);
-				}
-				int count = 0;
-				foreach (string s in result) {
-					if (s.Length > count) {
-						count = s.Length;
-					}
+					postResult.Add(rawStr);	// Send possible string (raw) into target ArrayList
 				}
 			}
-			return result;
+			int count = 0;	// Count the greatest length
+			foreach (StringBuilder s in postResult) {
+				if (s.Length > count) {
+					count = s.Length;
+				}
+			}
+			for (int i = 0; i < postResult.Count; i++) {	// Store strings with greatest length to final ArrayList
+				if (postResult[i].ToString().Length == count) {
+					finalResult.Add(postResult[i]);
+				}
+			}
+			return finalResult;
 		}
 	}
 }
