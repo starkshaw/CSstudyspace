@@ -41,6 +41,7 @@ namespace Decryption {
 			for (int i = 0; i < buffer.Length; i++) {
 				amountOfChar += buffer[i];
 			}
+			Console.WriteLine("DEC\tHEX\tFREQ\tRATIO\tBIN");
 			for (int i = 0; i < buffer.Length; i++) {
 				if (buffer[i] != 0) {
 					Console.WriteLine("{0}\t{1}\t{2}\t{3}%\t{4}\t", i, string.Format("0x{0:X}", i), /*Convert.ToChar(i),*/ buffer[i], Math.Round((double)buffer[i] / (double)amountOfChar * 100, 2), Convert.ToString(i, 2).PadLeft(8, '0'));
