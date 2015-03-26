@@ -8,7 +8,7 @@ namespace Decryption {
 	class Program {
 		static void Main(string[] args) {
 			string workingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-			Byte[] msg = File.ReadAllBytes(string.Format("{0}\\encoded.txt", workingPath));
+			Byte[] msg = File.ReadAllBytes(string.Format("{0}//encoded.txt", workingPath));
 			int[] buffer = new int[256];
 			int amountOfChar = 0;
 			for (int i = 0; i < msg.Length; i++) {
@@ -20,11 +20,11 @@ namespace Decryption {
 				}
 			}*/
 			// Find space (assumed)
-			/*for (int i = 0; i < msg.Length; i++) {
-				if (msg[i] == 167) {
-					Console.WriteLine("{0}\t{1}\t{2}", msg[i - 1], msg[i], msg[i + 1]);
+			for (int i = 0; i < msg.Length; i++) {
+				if (msg[i] == 140) {	// The ASCII Index of assumed space
+					Console.WriteLine("{0}\t{1}\t", msg[i - 1], msg[i]);
 				}
-			}*/
+			}
 			// Find keyword (assume de)
 			/*for (int i = 0; i < msg.Length; i++) {
 				if (msg[i] == 47 && msg[i + 2] == 167 && msg[i - 1] == 167) {
@@ -41,13 +41,14 @@ namespace Decryption {
 			for (int i = 0; i < buffer.Length; i++) {
 				amountOfChar += buffer[i];
 			}
+			Console.WriteLine("\nFREQUENCY DETAILS");
 			Console.WriteLine("DEC\tHEX\tFREQ\tRATIO\tBIN");
 			for (int i = 0; i < buffer.Length; i++) {
 				if (buffer[i] != 0) {
 					Console.WriteLine("{0}\t{1}\t{2}\t{3}%\t{4}\t", i, string.Format("0x{0:X}", i), /*Convert.ToChar(i),*/ buffer[i], Math.Round((double)buffer[i] / (double)amountOfChar * 100, 2), Convert.ToString(i, 2).PadLeft(8, '0'));
 				}
 			}
-			Console.WriteLine("\n{0}\n", amountOfChar);
+			Console.WriteLine("\nTotal characters: {0}\n", amountOfChar);
 			/*string[] invertedBinary = new string[amountOfChar];
 			int count = 0;
 			for (int i = 0; i < buffer.Length; i++) {
