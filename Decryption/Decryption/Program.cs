@@ -9,16 +9,19 @@ namespace Decryption {
 		static void Main(string[] args) {
 			string workingPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 			Byte[] msg = File.ReadAllBytes(string.Format("{0}//encoded.txt", workingPath));
+			string[] monogram = File.ReadAllLines(string.Format("{0}//finnish_monograms.txt", workingPath));
 			int[] buffer = new int[256];
 			int amountOfChar = 0;
 			for (int i = 0; i < msg.Length; i++) {
 				buffer[msg[i]]++;
 			}
-			/*for (int i = 0; i < buffer.Length; i++) {
-				if (buffer[i] != 0) {
-					amountOfChar++;
-				}
-			}*/
+			// Split
+			string[,] separatedMonogram = new string[monogram.Length, 2];
+			for (int i = 0; i < separatedMonogram.GetLength(0); i++) {
+				string[] temp = monogram[i].Split(' ');
+				separatedMonogram[i, 0] = temp[0];
+				separatedMonogram[i, 1] = temp[1];
+			}
 			// Summarize
 			for (int i = 0; i < buffer.Length; i++) {
 				amountOfChar += buffer[i];
