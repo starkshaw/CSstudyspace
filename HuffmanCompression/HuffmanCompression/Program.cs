@@ -8,9 +8,9 @@ namespace HuffmanCompression {
 		public static void Main(string[] args) {
 			if (args.Length == 0) {
 				// Initialize
-				int[] ascii_CodeTable = new int[128];			// Count the occurrence of ASCII characters
-				char[] ascii_Name = new char[128];				// Save the corresponding character to the ASCII name table, e.g. in 65th slot it store 'A'
-				double[] ratio = new double[128];				// Store the ratio of one character to the whole string
+				int[] ascii_CodeTable = new int[256];			// Count the occurrence of ASCII characters
+				char[] ascii_Name = new char[256];				// Save the corresponding character to the ASCII name table, e.g. in 65th slot it store 'A'
+				double[] ratio = new double[256];				// Store the ratio of one character to the whole string
 				for (int i = 0; i < ascii_Name.Length; i++) {
 					ascii_Name[i] = Convert.ToChar(i);
 				}
@@ -88,7 +88,7 @@ namespace HuffmanCompression {
 		/// Test the ASCII Table with its index and name.
 		/// </summary>
 		public static void printAsciiTable() {
-			char[] ascii_Name = new char[128];
+			char[] ascii_Name = new char[256];
 			for (int i = 0; i < ascii_Name.Length; i++) {
 				ascii_Name[i] = Convert.ToChar(i);
 			}
