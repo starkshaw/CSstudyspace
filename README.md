@@ -55,3 +55,17 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 ### Countdown Contest
 **Input a random string, find all matched words in the dictionary. Also support user-defined dictionary if default is missing.**
 - [Program.cs](CountdownContest/CountdownContest/Program.cs) - The main class.
+
+### Decryption
+**Decrypt and predict a encrypted code in human language.
+- [Program.cs](Decryption/Decryption/Program.cs) - The main class.
+
+### Windows Form Stopwatch
+- [Form 1 Algorithms](watch/watch/Form1.cs) - The algorithms part on Form 1.
+- [Form 1 Designer](watch/watch/Form1.Designer.cs) - The design layout of Form 1.
+
+### Highest Common Factor
+- [Program.cs](edclid1/edclid1/Program.cs) - The main class.
+
+### Public Key Decryption
+- [Program.cs](PublicKeyDecrypt/PublicKeyDecrypt/Program.cs) - The main class.
