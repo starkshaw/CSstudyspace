@@ -57,7 +57,7 @@ All solutions created on Microsoft Visual Studio 2010 Ultimate 32-bit version, a
 - [Program.cs](CountdownContest/CountdownContest/Program.cs) - The main class.
 
 ### Decryption
-**Decrypt and predict a encrypted code in human language.
+**Decrypt and predict a encrypted code in human language.**
 - [Program.cs](Decryption/Decryption/Program.cs) - The main class.
 
 ### Windows Form Stopwatch
