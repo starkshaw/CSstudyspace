@@ -6,9 +6,6 @@ using System.Text;
 namespace PublicKeyDecrypt {
 	class Program {
 		static void Main(string[] args) {
-			//Console.WriteLine(modPow(7, 31, 11));
-			//Console.WriteLine(modMult(7, 88, 9));
-
 			// Initialize
 			long[] publicKey = new long[3];
 			Console.WriteLine("\nEnter the public key consists by 3 integers, use comma separate only.\n");
@@ -18,6 +15,8 @@ namespace PublicKeyDecrypt {
 				for (int i = 0; i < input.Length; i++) {
 					publicKey[i] = long.Parse(input[i]);
 				}
+				long powAns = modPow(publicKey[0], publicKey[1], publicKey[2]);
+				Console.WriteLine("The answer is {0}.", powAns);
 			} catch (System.IndexOutOfRangeException) {		// Exception handlers
 				Console.WriteLine("\nERROR: Overloaded carries.");
 				Console.WriteLine("The public key shall only contains 3 integers.");
