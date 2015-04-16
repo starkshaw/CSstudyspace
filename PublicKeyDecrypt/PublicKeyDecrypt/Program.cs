@@ -17,7 +17,6 @@ namespace PublicKeyDecrypt {
 					publicKey[i] = long.Parse(inputPubKey[i]);
 				}
 				long powAns = modPow(publicKey[0], publicKey[1], publicKey[2]);
-				//Console.WriteLine("The modulus is {0}.", powAns);
 				Console.WriteLine("\nEnter the cipher consists by 2 integers, use comma only to separate.\n");
 				Console.Write("Cipher: ");
 				string[] inputCipher = Console.ReadLine().Split(',');
@@ -38,10 +37,6 @@ namespace PublicKeyDecrypt {
 					Console.WriteLine("The cipher shall only contains 2 integers.");
 					Environment.Exit(0);
 				}
-				//Console.WriteLine(modPow(23, 23, 29));
-				//Console.WriteLine(findPow(2, 29, 3));
-				//Console.WriteLine(modMult(23, 27, 5));
-				//Console.WriteLine("Implement the cipher: {0}.", modMult(15268076, 743675, powAns));
 			} catch (System.IndexOutOfRangeException) {		// Exception handlers
 				Console.WriteLine("\nERROR: Overloaded carries.");
 				Console.WriteLine("The public key shall only contains 3 integers.");
