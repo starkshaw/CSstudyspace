@@ -8,15 +8,40 @@ namespace PublicKeyDecrypt {
 		static void Main(string[] args) {
 			// Initialize
 			long[] publicKey = new long[3];
-			Console.WriteLine("\nEnter the public key consists by 3 integers, use comma separate only.\n");
+			long[] cipher = new long[2];
+			Console.WriteLine("\nEnter the public key consists by 3 integers, use comma only to separate.\n");
 			Console.Write("Public Key: ");
 			try {
-				string[] input = Console.ReadLine().Split(',');
-				for (int i = 0; i < input.Length; i++) {
-					publicKey[i] = long.Parse(input[i]);
+				string[] inputPubKey = Console.ReadLine().Split(',');
+				for (int i = 0; i < inputPubKey.Length; i++) {
+					publicKey[i] = long.Parse(inputPubKey[i]);
 				}
 				long powAns = modPow(publicKey[0], publicKey[1], publicKey[2]);
-				Console.WriteLine("The answer is {0}.", powAns);
+				//Console.WriteLine("The modulus is {0}.", powAns);
+				Console.WriteLine("\nEnter the cipher consists by 2 integers, use comma only to separate.\n");
+				Console.Write("Cipher: ");
+				string[] inputCipher = Console.ReadLine().Split(',');
+				if (inputCipher.Length == 2) {
+					for (int i = 0; i < inputCipher.Length; i++) {
+						cipher[i] = long.Parse(inputCipher[i]);
+					}
+					Console.WriteLine("\nCracking...");
+					Console.WriteLine("\n{0} ^ x mod {1} = {2}", publicKey[1], publicKey[0], publicKey[2]);
+					long privateKey = findPow(publicKey[1], publicKey[0], publicKey[2]);
+					Console.WriteLine("x = {0}\n\tis the private key.", privateKey);
+					Console.WriteLine("\nImplementing to cipher...");
+					long modVal = modPow(cipher[0], publicKey[0] - 1 - privateKey, publicKey[0]);
+					Console.WriteLine("\n{0} ^ ({1} - 1 - {2}) % {3} = {4}", cipher[0], publicKey[0], privateKey, publicKey[0], modVal);
+					Console.WriteLine("{0} * {1} % {2} = {3}\n\tis the encrypted message.", modVal, cipher[1], publicKey[0], modVal * cipher[1] % publicKey[0]);
+				} else {
+					Console.WriteLine("\nERROR: Overloaded carries.");
+					Console.WriteLine("The cipher shall only contains 2 integers.");
+					Environment.Exit(0);
+				}
+				//Console.WriteLine(modPow(23, 23, 29));
+				//Console.WriteLine(findPow(2, 29, 3));
+				//Console.WriteLine(modMult(23, 27, 5));
+				//Console.WriteLine("Implement the cipher: {0}.", modMult(15268076, 743675, powAns));
 			} catch (System.IndexOutOfRangeException) {		// Exception handlers
 				Console.WriteLine("\nERROR: Overloaded carries.");
 				Console.WriteLine("The public key shall only contains 3 integers.");
@@ -87,6 +112,31 @@ namespace PublicKeyDecrypt {
 			} else {
 				long half = modMult(first, second / 2, modulus);
 				return (half + half + first) % modulus;
+			}
+		}
+
+		/// <summary>
+		/// Find the power in the following form
+		/// number ^ power mod modulus = answer
+		/// </summary>
+		/// <param name="number">The first number</param>
+		/// <param name="modulus">The modulus number</param>
+		/// <param name="answer">The answer</param>
+		/// <returns>The power value</returns>
+		public static long findPow(long number, long modulus, long answer) {
+			Boolean flag = false;
+			long result = 0;
+			for (long i = 0; i < modulus; i++) {
+				if (modPow(number, i, modulus) == answer) {
+					result = i;		// Send the answer to outer loop
+					flag = true;	// The flag of return
+					break;
+				}
+			}
+			if (flag == true) {
+				return result;
+			} else {
+				return 0;
 			}
 		}
 	}
