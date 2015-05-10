@@ -6,12 +6,13 @@ using System.IO;
 using System.Collections;
 
 namespace TSP {
-	class Program {
+	public class Program {
 
 		public static string currentPath = Directory.GetCurrentDirectory();
+
 		public static string filePath = string.Format(@"{0}//alltowns.txt", currentPath);
 
-		static void Main(string[] args) {
+		public static void Main(string[] args) {
 			Console.Write("Loading file... ");
 			if (File.Exists(filePath)) {
 				Console.WriteLine("Finished. Organizing... ");
@@ -50,8 +51,6 @@ namespace TSP {
 				Console.WriteLine("Failed.\nFile {0} does not exist.", filePath);
 				Environment.Exit(-1);
 			}
-
-
 		}
 	}
 }
