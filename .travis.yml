@@ -1,1 +1,8 @@
 language: csharp
+solution: Decryption/Decryption.sln
+solution: FibonacciSequence/FibonacciSequence.sln
+solution: FindPrimeNumber/FindPrimeNumber.sln
+solution: HexDecoder/HexDecoder.sln
+solution: HexEncoder/HexEncoder.sln
+notifications:
+  email: false
